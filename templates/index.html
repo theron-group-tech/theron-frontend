@@ -1,0 +1,341 @@
+{% extends "base.html" %}
+
+{% block head %}
+<meta name="company" content="Theron Group">
+{% endblock %}
+
+{% block title %}Theron Group - Excelência e Diversificação{% endblock %}
+
+{% block header %}
+<header class="main-header">
+    <div class="container header-container">
+        <div class="logo-container">
+            <a href="{{ url_for('index') }}" class="logo-img">
+                <img src="{{ url_for('static', filename='images/theron-group-logo.png') }}" alt="Theron Group">
+            </a>
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="#empresas">Empresas</a>
+            <a href="#contato">Contato</a>
+        </nav>
+        
+        <div class="header-cta">
+            <a href="#contato" class="btn btn-fale-conosco">Fale Conosco</a>
+        </div>
+        
+        <button class="mobile-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section group-hero">
+    <div class="container">
+        <div class="hero-content">
+            <span class="hero-tagline montserrat">Theron Group</span>
+            <h1 class="hero-title montserrat">
+                Excelência<br>
+                <span>que conecta</span>
+            </h1>
+            <p class="hero-description inter">
+                Um conglomerado de excelência que oferece soluções integradas e premium nos setores financeiro, de seguros, viagens, contabilidade e consultoria. Nossas empresas são sinônimo de confiança, inovação e resultados excepcionais.
+            </p>
+            <div class="hero-buttons">
+                <a href="#empresas" class="btn btn-primary">Conheça Nossas Empresas</a>
+                <a href="#contato" class="btn btn-fale-conosco">Fale Conosco</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Companies Section -->
+<section id="empresas" class="companies-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-subtitle inter">Nossas Empresas</span>
+            <h2 class="section-title montserrat">Unidades de Negócio</h2>
+            <p class="section-description inter">
+                Conheça as empresas que compõem o Theron Group e suas respectivas áreas de atuação.
+            </p>
+        </div>
+        
+        <div class="companies-grid">
+            <!-- Theron Capital -->
+            <div class="company-card">
+                <div class="company-icon">
+                    <img src="{{ url_for('static', filename='images/theron-capital-logo.png') }}" alt="Theron Capital">
+                </div>
+                <h3 class="montserrat">Theron Capital</h3>
+                <p class="company-description inter">
+                    Excelência, Estratégia e Inteligência em Soluções Financeiras. Gestão financeira estratégica com mais de 39 anos de experiência.
+                </p>
+                <ul class="company-services inter">
+                    <li><i class="fas fa-check-circle"></i> Empréstimo Estruturado</li>
+                    <li><i class="fas fa-check-circle"></i> Crédito Garantia Imobiliária</li>
+                    <li><i class="fas fa-check-circle"></i> FIDC e Securitização</li>
+                    <li><i class="fas fa-check-circle"></i> Home Equity</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Investimentos Estruturados:</strong></li>
+                    <li style="padding-left: 1.5rem;"><i class="fas fa-check-circle"></i> CRI, CRA, Debêntures</li>
+                    <li style="padding-left: 1.5rem;"><i class="fas fa-check-circle"></i> Nota Comercial</li>
+                </ul>
+                <a href="{{ url_for('theron_capital') }}" class="btn-card">Acessar Theron Capital</a>
+            </div>
+            
+            <!-- TheronSeg -->
+            <div class="company-card">
+                <div class="company-icon">
+                    <img src="{{ url_for('static', filename='images/theron-seg-logo.png') }}" alt="TheronSeg">
+                </div>
+                <h3 class="montserrat">TheronSeg</h3>
+                <p class="company-description inter">
+                    Estrutura, Estratégia e Excelência em Gestão de Riscos. Portfólio completo em todas as modalidades de seguros.
+                </p>
+                <ul class="company-services inter">
+                    <li><i class="fas fa-check-circle"></i> Seguro de Vida e Resgatável</li>
+                    <li><i class="fas fa-check-circle"></i> Consórcio e Previdência</li>
+                    <li><i class="fas fa-check-circle"></i> Seguros Corporativos</li>
+                    <li><i class="fas fa-check-circle"></i> Seguro de Carro e Moto</li>
+                    <li><i class="fas fa-check-circle"></i> Seguro Residencial</li>
+                    <li><i class="fas fa-check-circle"></i> Seguro Finança</li>
+                    <li><i class="fas fa-check-circle"></i> Garantia Locatícia</li>
+                </ul>
+                <a href="{{ url_for('theronseg') }}" class="btn-card">Acessar TheronSeg</a>
+            </div>
+            
+            <!-- Theron Tour -->
+            <div class="company-card">
+                <div class="company-icon">
+                    <img src="{{ url_for('static', filename='images/theron-tour-logo.png') }}" alt="Theron Tour">
+                </div>
+                <h3 class="montserrat">Theron Tour</h3>
+                <p class="company-description inter">
+                    Excelência, Curadoria e Inteligência em Experiências de Viagem. Turismo Corporativo e roteiros exclusivos.
+                </p>
+                <ul class="company-services inter">
+                    <li><i class="fas fa-check-circle"></i> Turismo Corporativo</li>
+                    <li><i class="fas fa-check-circle"></i> Roteiros Exclusivos para Pessoas e Grupos</li>
+                    <li><i class="fas fa-check-circle"></i> Gestão de Milhas</li>
+                </ul>
+                <a href="{{ url_for('theron_tour') }}" class="btn-card">Acessar Theron Tour</a>
+            </div>
+            
+            <!-- Theron Contábil -->
+            <div class="company-card">
+                <div class="company-icon">
+                    <img src="{{ url_for('static', filename='images/theron-contabil-logo.png') }}" alt="Theron Contábil">
+                </div>
+                <h3 class="montserrat">Theron Contábil</h3>
+                <p class="company-description inter">
+                    Soluções contábeis completas para empresas de todos os portes. Tecnologia e expertise a serviço da sua gestão.
+                </p>
+                <ul class="company-services inter">
+                    <li><i class="fas fa-check-circle"></i> Contabilidade Empresarial</li>
+                    <li><i class="fas fa-check-circle"></i> Departamento Fiscal</li>
+                    <li><i class="fas fa-check-circle"></i> Departamento Pessoal</li>
+                    <li><i class="fas fa-check-circle"></i> Consultoria Contábil</li>
+                    <li><i class="fas fa-check-circle"></i> Aplicativo para o Cliente</li>
+                </ul>
+                <a href="https://www.fwprojetos.com.br/theronconsultoria/" target="_blank" class="btn-card">Acessar Theron Contábil</a>
+            </div>
+            
+            <!-- Theron MEI -->
+            <div class="company-card">
+                <div class="company-icon">
+                    <img src="{{ url_for('static', filename='images/theron-mei-logo.png') }}" alt="Theron MEI">
+                </div>
+                <h3 class="montserrat">Theron MEI</h3>
+                <p class="company-description inter">
+                    Soluções contábeis especializadas para Microempreendedores Individuais. Simplicidade e eficiência para o seu negócio.
+                </p>
+                <ul class="company-services inter">
+                    <li><i class="fas fa-check-circle"></i> Contabilidade para MEI</li>
+                    <li><i class="fas fa-check-circle"></i> Departamento Fiscal</li>
+                    <li><i class="fas fa-check-circle"></i> Departamento Pessoal</li>
+                    <li><i class="fas fa-check-circle"></i> Consultoria Contábil</li>
+                    <li><i class="fas fa-check-circle"></i> Aplicativo para MEI</li>
+                </ul>
+                <a href="https://www.fwprojetos.com.br/theronmei/" target="_blank" class="btn-card">Acessar Theron MEI</a>
+            </div>
+            
+            <!-- Theron Consultoria -->
+            <div class="company-card">
+                <div class="company-icon">
+                    <img src="{{ url_for('static', filename='images/theron-consult-logo.png') }}" alt="Theron Consultoria">
+                </div>
+                <h3 class="montserrat">Theron Consultoria</h3>
+                <p class="company-description inter">
+                    Consultoria financeira especializada em estratégia, governança e inteligência financeira para empresas e family offices.
+                </p>
+                <ul class="company-services inter">
+                    <li><i class="fas fa-check-circle"></i> Finanças Corporativas</li>
+                    <li><i class="fas fa-check-circle"></i> Estrutura de Capital</li>
+                    <li><i class="fas fa-check-circle"></i> Gestão de Investimentos</li>
+                    <li><i class="fas fa-check-circle"></i> Arquitetura Patrimonial e Fiscal</li>
+                    <li><i class="fas fa-check-circle"></i> Governança, Riscos e Compliance</li>
+                    <li><i class="fas fa-check-circle"></i> Transformação Digital e Fintechs</li>
+                </ul>
+                <a href="{{ url_for('theron_consultoria') }}" class="btn-card">Acessar Theron Consultoria</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contato" class="contact-section">
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-info-box">
+                <div class="section-header left">
+                    <span class="section-subtitle inter">Fale Conosco</span>
+                    <h2 class="section-title montserrat">Vamos conversar</h2>
+                    <p class="section-description inter">
+                        Estamos prontos para atender você e entender como podemos contribuir para o seu sucesso.
+                    </p>
+                </div>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="method-details">
+                            <h4 class="montserrat">WhatsApp</h4>
+                            <a href="https://wa.me/5511989292579?text=Olá!%20Gostaria%20de%20falar%20com%20o%20Theron%20Group" target="_blank" class="whatsapp-number">
+                                <i class="fab fa-whatsapp"></i> (11) 98929-2579
+                            </a>
+                            <span class="inter">Clique para falar conosco</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="method-details">
+                            <h4 class="montserrat">E-mail</h4>
+                            <a href="mailto:comercial@therongroup.com.br">comercial@therongroup.com.br</a>
+                            <span class="inter">Respondemos em até 24h</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="method-details">
+                            <h4 class="montserrat">Localização</h4>
+                            <span class="inter">São Paulo, SP</span>
+                            <span class="inter">Brasil</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Redes sociais removidas conforme solicitado -->
+            </div>
+            
+            <div class="contact-form-box">
+                <div class="form-header">
+                    <h3 class="montserrat">Envie uma mensagem</h3>
+                    <p class="inter">Preencha o formulário e entraremos em contato</p>
+                </div>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="Nome" placeholder="Seu nome completo" required class="inter">
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" name="E-mail" placeholder="Seu e-mail" required class="inter">
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="tel" name="Telefone" placeholder="Seu telefone" class="inter">
+                    </div>
+                    
+                    <div class="form-group">
+                        <select name="Interesse" class="inter">
+                            <option value="">Área de interesse</option>
+                            <option value="Theron Capital">Theron Capital</option>
+                            <option value="TheronSeg">TheronSeg</option>
+                            <option value="Theron Tour">Theron Tour</option>
+                            <option value="Theron Contábil">Theron Contábil</option>
+                            <option value="Theron MEI">Theron MEI</option>
+                            <option value="Theron Consultoria">Theron Consultoria</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea name="Mensagem" rows="4" placeholder="Sua mensagem" class="inter"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Enviar mensagem</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block footer %}
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="{{ url_for('static', filename='images/theron-group-logo.png') }}" alt="Theron Group">
+                </div>
+                <p class="footer-tagline montserrat">Excelência e Diversificação</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4 class="montserrat">Empresas</h4>
+                    <ul class="inter">
+                        <li><a href="{{ url_for('theron_capital') }}">Theron Capital</a></li>
+                        <li><a href="{{ url_for('theronseg') }}">TheronSeg</a></li>
+                        <li><a href="{{ url_for('theron_tour') }}">Theron Tour</a></li>
+                        <li><a href="https://www.fwprojetos.com.br/theronconsultoria/" target="_blank">Theron Contábil</a></li>
+                        <li><a href="https://www.fwprojetos.com.br/theronmei/" target="_blank">Theron MEI</a></li>
+                        <li><a href="{{ url_for('theron_consultoria') }}">Theron Consultoria</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="montserrat">Navegação</h4>
+                    <ul class="inter">
+                        <li><a href="#empresas">Empresas</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="montserrat">Contato</h4>
+                    <ul class="footer-contact inter">
+                        <li><i class="fab fa-whatsapp"></i> (11) 98929-2579</li>
+                        <li><i class="fas fa-envelope"></i> comercial@therongroup.com.br</li>
+                        <li><i class="fas fa-map-marker-alt"></i> São Paulo, SP</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright inter">
+                <p>&copy; 2025 Theron Group. Todos os direitos reservados.</p>
+            </div>
+            <div class="development inter">
+                <p>Desenvolvido por <a href="https://www.autotechdev.com.br" target="_blank">Autotech.dev</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<button class="back-to-top" aria-label="Voltar ao topo">
+    <i class="fas fa-chevron-up"></i>
+</button>
+{% endblock %}
