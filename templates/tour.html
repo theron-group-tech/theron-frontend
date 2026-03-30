@@ -17,6 +17,7 @@
         
         <nav class="nav-menu">
             <a href="{{ url_for('index') }}" class="nav-principal">Principal</a>
+            <a href="#destinos">Destinos</a>
             <a href="#quem-somos">Quem Somos</a>
             <a href="#servicos">Serviços</a>
             <a href="#contato">Contato</a>
@@ -25,6 +26,8 @@
         <div class="header-cta">
             <a href="#contato" class="btn btn-fale-conosco">Fale Conosco</a>
         </div>
+        
+        <div class="header-auth"></div>
         
         <button class="mobile-toggle" aria-label="Menu">
             <span></span>
@@ -49,12 +52,117 @@
                 em Experiências de Viagem. Viagens que transcendem o destino.
             </p>
             <div class="hero-buttons">
-                <a href="#quem-somos" class="btn btn-primary">Conheça Nossa Curadoria</a>
+                <a href="{{ url_for('theron_tour_trips') }}" class="btn btn-primary">Comprar viagens online</a>
+                <a href="#quem-somos" class="btn btn-fale-conosco">Conheça Nossa Curadoria</a>
                 <a href="#contato" class="btn btn-fale-conosco">Fale Conosco</a>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Destinos em evidência -->
+<section id="destinos" class="services-section" style="background: #f8f6f1;">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-subtitle inter">Catálogo Online</span>
+            <h2 class="section-title montserrat">Destinos em evidência</h2>
+            <p class="section-description inter">Confira os roteiros disponíveis para compra direta, com planejamento completo e curadoria Theron Tour.</p>
+        </div>
+
+        <div id="tour-trips-grid" class="services-grid" style="min-height: 160px; align-items: stretch;">
+            <p id="tour-trips-loading" class="inter" style="grid-column: 1/-1; text-align: center; color: #666; padding: 2rem 0;">Carregando destinos...</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 2.5rem;">
+            <a href="{{ url_for('theron_tour_trips') }}" class="btn btn-primary" style="font-size: 1rem; padding: 0.85rem 2.5rem;">
+                Ver todos os destinos &rarr;
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+(function () {
+    function formatCurrency(value) {
+        return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(Number(value || 0));
+    }
+
+    function pickFirst() {
+        for (var i = 0; i < arguments.length; i++) {
+            if (arguments[i] !== null && arguments[i] !== undefined && arguments[i] !== '') return arguments[i];
+        }
+        return null;
+    }
+
+    function tripImage(t) {
+        var url = pickFirst(t.coverImageUrl, t.cover_image_url);
+        if (url) return url;
+        var imgs = t.images || t.gallery || [];
+        if (imgs.length) return typeof imgs[0] === 'string' ? imgs[0] : (imgs[0].url || imgs[0].imageUrl || '');
+        return 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80';
+    }
+
+    function renderCard(t) {
+        var slug   = pickFirst(t.slug, t.code) || '';
+        var title  = pickFirst(t.title, t.name) || 'Viagem sem título';
+        var dest   = pickFirst(t.destination, t.city) || '';
+        var desc   = pickFirst(t.shortDescription, t.short_description, t.summary) || '';
+        var price  = Number(pickFirst(t.price, t.basePrice, t.base_price) || 0);
+        var img    = tripImage(t);
+
+        var card = document.createElement('div');
+        card.className = 'service-card hover-card';
+        card.style.cssText = 'display:flex;flex-direction:column;padding:0;overflow:hidden;';
+        card.innerHTML = [
+            '<div style="height:180px;overflow:hidden;flex-shrink:0;">',
+            '  <img src="' + img + '" alt="' + title + '" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.src=\'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80\'">',
+            '</div>',
+            '<div style="padding:1.5rem;display:flex;flex-direction:column;flex:1;">',
+            '  <p class="inter" style="font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--satin-sheen-gold,#b88911);margin-bottom:.4rem;">' + dest + '</p>',
+            '  <h3 class="montserrat card-title" style="margin-bottom:.6rem;">' + title + '</h3>',
+            '  <p class="inter" style="flex:1;color:#555;font-size:.9rem;margin-bottom:1.2rem;">' + desc + '</p>',
+            '  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;">',
+            '    <strong class="montserrat" style="font-size:1.1rem;color:var(--prussian-blue,#003153);">' + formatCurrency(price) + '</strong>',
+            '    <a href="/theron-tour/destinos/' + slug + '" class="btn-service inter" style="margin:0;"><i class="fas fa-arrow-right"></i> Ver detalhes</a>',
+            '  </div>',
+            '</div>'
+        ].join('');
+        return card;
+    }
+
+    function loadTrips() {
+        var grid    = document.getElementById('tour-trips-grid');
+        var loading = document.getElementById('tour-trips-loading');
+
+        fetch('/api/public/trips?page=0&size=6')
+            .then(function (r) { return r.json(); })
+            .then(function (json) {
+                if (loading) loading.remove();
+                var payload = json.data !== undefined ? json.data : json;
+                var items   = Array.isArray(payload) ? payload
+                            : Array.isArray(payload.content) ? payload.content
+                            : Array.isArray(payload.items)   ? payload.items
+                            : Array.isArray(payload.trips)   ? payload.trips : [];
+
+                if (!items.length) {
+                    grid.innerHTML = '<p class="inter" style="grid-column:1/-1;text-align:center;color:#888;padding:2rem 0;">Nenhum destino disponível no momento.</p>';
+                    return;
+                }
+                items.forEach(function (t) { grid.appendChild(renderCard(t)); });
+            })
+            .catch(function () {
+                if (loading) loading.remove();
+                grid.innerHTML = '<p class="inter" style="grid-column:1/-1;text-align:center;color:#888;padding:2rem 0;">Não foi possível carregar os destinos.</p>';
+            });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadTrips);
+    } else {
+        loadTrips();
+    }
+})();
+</script>
 
 <!-- Quem Somos -->
 <section id="quem-somos" class="about-fullwidth" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">

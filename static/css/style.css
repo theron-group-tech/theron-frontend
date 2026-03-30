@@ -408,6 +408,47 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--prussian-blue);
 }
 
+.btn-outline-primary {
+    background-color: transparent;
+    color: var(--prussian-blue);
+    border: 2px solid var(--prussian-blue);
+    font-weight: 600;
+    padding: 0.65rem 1.2rem;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--prussian-blue);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-logout {
+    background-color: transparent;
+    color: #9f1239;
+    border: 2px solid #f5c2c7;
+    font-weight: 600;
+    padding: 0.65rem 1.2rem;
+}
+
+.btn-logout:hover {
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+    color: #721c24;
+}
+
+.header-auth {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-user-name {
+    color: var(--prussian-blue);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
 .whatsapp-number {
     color: var(--satin-sheen-gold);
     text-decoration: none;
