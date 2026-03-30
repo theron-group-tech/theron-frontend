@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastro - Theron Group{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
+
+{% block header %}
+    <header class="tt-auth-header">
+        <div class="tt-auth-container">
+            <a href="{{ url_for('index') }}" class="tt-auth-logo">
+                <span>Theron Group</span>
+            </a>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <section class="tt-auth-page">
+        <div class="tt-auth-container">
+            <article class="tt-auth-form-wrapper">
+                <div class="tt-auth-header-content">
+                    <h1 class="montserrat">Cadastre-se</h1>
+                    <p class="inter">Crie sua conta para acessar as melhores ofertas</p>
+                </div>
+
+                <form id="tt-signup-form" class="tt-auth-form">
+                    <label class="inter">
+                        Nome completo
+                        <input 
+                            type="text" 
+                            name="fullName" 
+                            id="tt-signup-fullname" 
+                            placeholder="Seu nome completo" 
+                            required
+                        >
+                    </label>
+
+                    <label class="inter">
+                        E-mail
+                        <input 
+                            type="email" 
+                            name="email" 
+                            id="tt-signup-email" 
+                            placeholder="seu@email.com" 
+                            required
+                        >
+                    </label>
+
+                    <label class="inter">
+                        Telefone
+                        <input 
+                            type="tel" 
+                            name="phone" 
+                            id="tt-signup-phone" 
+                            placeholder="(11) 99999-9999" 
+                            required
+                        >
+                    </label>
+
+                    <label class="inter">
+                        Senha
+                        <input 
+                            type="password" 
+                            name="password" 
+                            id="tt-signup-password" 
+                            placeholder="Minimo 6 caracteres" 
+                            required
+                        >
+                    </label>
+
+                    <label class="inter">
+                        Confirmar senha
+                        <input 
+                            type="password" 
+                            name="passwordConfirm" 
+                            id="tt-signup-password-confirm" 
+                            placeholder="Confirme sua senha" 
+                            required
+                        >
+                    </label>
+
+                    <button type="submit" class="btn btn-primary tt-auth-submit-btn" id="tt-signup-submit">
+                        Cadastrar
+                    </button>
+                </form>
+
+                <p id="tt-signup-feedback" class="tt-auth-feedback hidden"></p>
+
+                <div class="tt-auth-footer-text inter">
+                    <span>Ja tem uma conta?</span>
+                    <a href="{{ url_for('auth_login') }}" class="tt-auth-link">Faca login aqui</a>
+                </div>
+            </article>
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+    <script>
+        // Initialize signup page
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                initSignupPage();
+            });
+        } else {
+            initSignupPage();
+        }
+    </script>
+{% endblock %}

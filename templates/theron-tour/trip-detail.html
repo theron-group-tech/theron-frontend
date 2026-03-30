@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block head %}
+<meta name="company" content="Theron Tour">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/theron-tour-catalog.css') }}">
+{% endblock %}
+
+{% block title %}Theron Tour | Detalhes da Viagem{% endblock %}
+
+{% block header %}
+<header class="main-header">
+    <div class="container header-container">
+        <div class="logo-container">
+            <a href="{{ url_for('index') }}" class="logo-img">
+                <img src="{{ url_for('static', filename='images/theron-tour-logo.png') }}" alt="Theron Tour">
+            </a>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="{{ url_for('theron_tour') }}">Inicio</a>
+            <a href="{{ url_for('theron_tour_trips') }}" class="nav-principal">Viagens</a>
+            <a href="{{ url_for('theron_tour') }}#contato">Contato</a>
+        </nav>
+
+        <div class="header-cta">
+            <a href="{{ url_for('theron_tour') }}#contato" class="btn btn-fale-conosco">Fale Conosco</a>
+        </div>
+
+        <button class="mobile-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="tt-detail-page" data-trip-slug="{{ trip_slug }}">
+    <div class="container">
+        <a class="tt-back inter" href="{{ url_for('theron_tour_trips') }}">&larr; Voltar para destinos</a>
+
+        <article id="tt-detail-card" class="tt-detail-card hidden">
+            <div class="tt-detail-media">
+                <img id="tt-detail-image" src="" alt="Imagem da viagem">
+            </div>
+            <div class="tt-detail-content">
+                <p id="tt-detail-destination" class="hero-tagline montserrat"></p>
+                <h1 id="tt-detail-title" class="montserrat"></h1>
+                <p id="tt-detail-summary" class="inter"></p>
+                <p id="tt-detail-description" class="inter"></p>
+                <div class="tt-detail-footer">
+                    <strong id="tt-detail-price" class="montserrat"></strong>
+                    <a id="tt-buy-now" href="{{ url_for('theron_tour_checkout', slug=trip_slug) }}" class="btn btn-primary">Comprar agora</a>
+                </div>
+            </div>
+        </article>
+
+        <p id="tt-detail-feedback" class="tt-feedback inter">Carregando detalhes...</p>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/theron-tour/catalog.js') }}"></script>
+{% endblock %}
