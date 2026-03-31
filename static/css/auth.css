@@ -1,0 +1,203 @@
+/* Auth Pages Styling */
+
+.tt-auth-header {
+    background: white;
+    border-bottom: 1px solid #e0e6ed;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.tt-auth-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.tt-auth-logo {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--prussian-blue);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.tt-auth-logo:hover {
+    color: var(--satin-sheen-gold);
+}
+
+.tt-auth-page {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    background: linear-gradient(135deg, rgba(0, 50, 73, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
+}
+
+.tt-auth-form-wrapper {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 420px;
+}
+
+.tt-auth-header-content {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.tt-auth-header-content h1 {
+    color: var(--prussian-blue);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.tt-auth-header-content p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.tt-auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.tt-auth-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--prussian-blue);
+    font-weight: 500;
+}
+
+.tt-auth-form input {
+    padding: 0.75rem;
+    border: 1px solid #d1dae3;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+}
+
+.tt-auth-form input::placeholder {
+    color: #999;
+}
+
+.tt-auth-form input:focus {
+    outline: none;
+    border-color: var(--satin-sheen-gold);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.tt-auth-form input:invalid:not(:placeholder-shown) {
+    border-color: #f5222d;
+}
+
+.tt-auth-submit-btn {
+    width: 100%;
+    padding: 0.85rem;
+    font-size: 0.95rem;
+    background-color: var(--prussian-blue);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tt-auth-submit-btn:hover {
+    background-color: var(--satin-sheen-gold);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.tt-auth-submit-btn:active {
+    transform: translateY(0);
+}
+
+.tt-auth-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.tt-auth-feedback {
+    padding: 0.9rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
+
+.tt-auth-feedback:not(.hidden) {
+    display: block;
+}
+
+.tt-auth-feedback.hidden {
+    display: none;
+}
+
+.tt-auth-feedback.error {
+    background: #f8d7da;
+    border: 1px solid #f5c2c7;
+    color: #721c24;
+}
+
+.tt-auth-feedback.success {
+    background: #d1e7dd;
+    border: 1px solid #badbcc;
+    color: #0f5132;
+}
+
+.tt-auth-footer-text {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.tt-auth-link {
+    color: var(--satin-sheen-gold);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.tt-auth-link:hover {
+    color: var(--prussian-blue);
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tt-auth-form-wrapper {
+        padding: 2rem;
+    }
+
+    .tt-auth-header-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .tt-auth-form {
+        gap: 1rem;
+    }
+}
